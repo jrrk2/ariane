@@ -388,6 +388,9 @@ module wt_dcache_missunit #(
           end else begin
             state_d     = DRAIN;
           end
+        // check for non-cached read whilst write buffer is non-empty, if so drain but still allow more stores
+        end else if ((|miss_req_masked_d) && (!miss_is_write) && miss_nc_i[miss_port_idx] && !wbuffer_empty_i) begin
+           state_d = DRAIN;
         // we've got a miss to handle
         end else if (|miss_req_masked_d) begin
           // this is a write miss, just pass through (but check whether write collides with MSHR)

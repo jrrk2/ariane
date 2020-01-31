@@ -81,14 +81,14 @@ package ariane_soc;
     ExecuteRegionAddrBase: {DRAMBase,   ROMBase,   DebugBase},
     ExecuteRegionLength:   {DRAMLength, ROMLength, DebugLength},
     // cached region
-    NrCachedRegionRules:    1,
-    CachedRegionAddrBase:  {DRAMBase},
-    CachedRegionLength:    {DRAMLength},
+    NrCachedRegionRules:   2,
+    CachedRegionAddrBase:  {DRAMBase,   ROMBase},
+    CachedRegionLength:    {DRAMLength, ROMLength},
     //  cache config
-    Axi64BitCompliant:      1'b1,
-    SwapEndianess:          1'b0,
+    Axi64BitCompliant:     1'b1,
+    SwapEndianess:         1'b0,
     // debug
-    DmBaseAddress:          DebugBase
+    DmBaseAddress:         DebugBase
   };
 
 endpackage

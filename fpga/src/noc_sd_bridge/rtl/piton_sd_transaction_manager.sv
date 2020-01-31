@@ -323,28 +323,28 @@ module piton_sd_transaction_manager(
         case (state)
             ST_CMD17_DMA:           fsm = {`dst_src_addr,   req_addr_dma_f,                                 y, y};
             ST_CMD17_CMD:           fsm = {`command,        18'b0, 6'd17, 1'b0, dat_rd, y, y, n, resp_sh,   y, y};
-            ST_CMD17_WAIT_CLR:      fsm = {8'bx,            32'bx,                                          n, n};
+            ST_CMD17_WAIT_CLR:      fsm = {8'b0,            32'b0,                                          n, n};
             ST_CMD17_ARG:           fsm = {`argument,       req_addr_sd_f,                                  y, y};
-            ST_CMD17_WAIT_CMD_INT:  fsm = {8'bx,            32'bx,                                          n, n};
-            ST_CMD17_RD_CMD_ISR:    fsm = {`cmd_isr,        32'bx,                                          n, y};
-            ST_CMD17_RD_RESP0:      fsm = {`resp0,          32'bx,                                          n, y};
-            ST_CMD17_WAIT_DATA_INT: fsm = {8'bx,            32'bx,                                          n, n};
-            ST_CMD17_RD_DATA_ISR:   fsm = {`data_isr,       32'bx,                                          n, y};
+            ST_CMD17_WAIT_CMD_INT:  fsm = {8'b0,            32'b0,                                          n, n};
+            ST_CMD17_RD_CMD_ISR:    fsm = {`cmd_isr,        32'b0,                                          n, y};
+            ST_CMD17_RD_RESP0:      fsm = {`resp0,          32'b0,                                          n, y};
+            ST_CMD17_WAIT_DATA_INT: fsm = {8'b0,            32'b0,                                          n, n};
+            ST_CMD17_RD_DATA_ISR:   fsm = {`data_isr,       32'b0,                                          n, y};
 
             ST_CMD24_DMA:           fsm = {`dst_src_addr,   req_addr_dma_f,                                 y, y};
             ST_CMD24_CMD:           fsm = {`command,        18'b0, 6'd24, 1'b0, dat_wr, y, y, n, resp_sh,   y, y};
-            ST_CMD24_WAIT_CLR:      fsm = {8'bx,            32'bx,                                          n, n};
+            ST_CMD24_WAIT_CLR:      fsm = {8'b0,            32'b0,                                          n, n};
             ST_CMD24_ARG:           fsm = {`argument,       req_addr_sd_f,                                  y, y};
-            ST_CMD24_WAIT_CMD_INT:  fsm = {8'bx,            32'bx,                                          n, n};
-            ST_CMD24_RD_CMD_ISR:    fsm = {`cmd_isr,        32'bx,                                          n, y};
-            ST_CMD24_RD_RESP0:      fsm = {`resp0,          32'bx,                                          n, y};
-            ST_CMD24_WAIT_DATA_INT: fsm = {8'bx,            32'bx,                                          n, n};
-            ST_CMD24_RD_DATA_ISR:   fsm = {`data_isr,       32'bx,                                          n, y};
+            ST_CMD24_WAIT_CMD_INT:  fsm = {8'b0,            32'b0,                                          n, n};
+            ST_CMD24_RD_CMD_ISR:    fsm = {`cmd_isr,        32'b0,                                          n, y};
+            ST_CMD24_RD_RESP0:      fsm = {`resp0,          32'b0,                                          n, y};
+            ST_CMD24_WAIT_DATA_INT: fsm = {8'b0,            32'b0,                                          n, n};
+            ST_CMD24_RD_DATA_ISR:   fsm = {`data_isr,       32'b0,                                          n, y};
 
             ST_CLR_CMD_ISR:         fsm = {`cmd_isr,        32'b0,                                          y, y};
             ST_CLR_DAT_ISR:         fsm = {`data_isr,       32'b0,                                          y, y};
 
-            default:                fsm = {8'bx,            32'bx,                                          n, n};
+            default:                fsm = {8'b0,            32'b0,                                          n, n};
         endcase
     end
 endmodule

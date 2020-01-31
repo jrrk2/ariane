@@ -356,13 +356,17 @@ sd_bus sd1
    .sd_irq       ( irq_sources[1]          )
         );
        always @(posedge clk_i)
-         if (spi_en)
-           begin
-              if (spi_we)
-                $display("%t: SPI write (addr=%X,data=%X)", $time, spi_addr, spi_wrdata);
-              else
-                $display("%t: SPI read (addr=%X,data=%X)", $time, spi_addr, spi_rdata);
-           end
+         begin:spi_disp
+            reg spi_en_prev;
+            spi_en_prev <= spi_en;
+            if (spi_en)
+              begin
+                 if (spi_we)
+                   $display("%t: SPI write (addr=%X,data=%X)", $time, spi_addr, spi_wrdata);
+                 else if (spi_en_prev)
+                   $display("%t: SPI read (addr=%X,data=%X)", $time, spi_addr, spi_rdata);
+              end
+         end
     end else begin
         assign sd_sclk = 1'b0;
         assign sd_dat = 4'bzzzz;
